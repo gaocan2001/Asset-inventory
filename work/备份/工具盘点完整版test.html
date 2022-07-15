@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta name="keywords" content="Web开发，HTML5，CSS3">
+		<title>上海交通大学弗劳恩霍夫中心实习项目——资产盘点</title>
+		<link rel="icon" type="image/x-icon" href="./image/favicon.ico">
+		<!-- <script src="https://res2.wx.qq.com/open/js/jweixin-1.6.0.js"></script> -->
+        <style type="text/css">
+            .header {
+                position: relative;
+                width: auto;
+                margin-top: 50px;
+                margin-bottom: 50px;
+                height: 100px;
+                text-align: center;
+                line-height: 100px;
+                color: red;
+                background-color: blue;
+            }
+
+            button.button1, button.button2 {
+                position: relative;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 30px;
+                text-align: center;
+                width: 100px;
+                height: 50px;
+                color: black;
+            }
+            p {color: blue}
+            a {color: yellow}
+		</style>
+
+        <script>
+            window.onload=function(){
+                var btn1 = document.querySelector('.button1');
+                var btn2 = document.querySelector('.button2');
+                var qr = null;
+                btn1.addEventListener('click',function(){
+                    scanCode()
+                    // qr=GetQueryString("qrresult");
+                    // alert(qr)
+                    // if(qr) document.getElementById("sn").value=qr;
+                })
+                btn2.addEventListener('click',function(){
+                    url = window.location.href;
+                    if(qr){
+                        alert(qr)
+                    }             
+                    location.href = "./工具盘点.html"
+                    url = window.location.href;
+                    alert(url);   
+                })
+
+                function is_weixn() {
+                    return navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1
+                }
+
+                function scanCode() {
+                    if (!this.is_weixn()) {
+                        alert('请用微信打开页面，扫码功能仅支持微信页面')
+                        return
+                    }
+                    let hrefStr = location.href
+                    let href = hrefStr
+                    if (hrefStr.indexOf('?') !== -1) {
+                        href = hrefStr.split('?')[0]
+                    }
+                    // location.href = `http://sao315.com/w/api/saoyisao?redirect_uri=${encodeURIComponent(href)}`
+                    location.href = "http://sao315.com/w/api/saoyisao?redirect_uri=" + encodeURIComponent(location.href);
+                    // location.href = `http://www.jiujiujin.net/testsaoyisao.htm`
+                    // location.href = `//996315.com/api/scan/`
+                    var url = null;
+                    qr=GetQueryString("qrresult");
+                    var btn2 = document.querySelector('.button2');
+                    btn2.addEventListener('click',function(){
+                        if(qr){
+                            alert(qr)
+                        }                
+                    })
+                    document.getElementById("sn").value=qr;
+                    // }
+                }
+                function GetQueryString(name){
+                    var reg = new RegExp("\\b"+ name +"=([^&]*)");
+                    url = window.location.href
+                    var r = location.href.match(reg);
+                    if (r!=null) return decodeURIComponent(r[1]);
+                }
+                var btn3 = document.querySelector('.button3');
+                btn3.onclick = function(){
+                    alert(1)
+                    if (!this.is_weixn()) {
+                        alert('请用微信打开页面，扫码功能仅支持微信页面')
+                        return
+                    }
+                    location.href = "http://sao315.com/w/api/saoyisao?redirect_uri=" + encodeURIComponent(location.href);
+                }
+            }
+        </script>
+
+	</head>
+	<body>
+		<h1 class="header">工具盘点</h1>
+		<button type="button" class="button1">开始盘点</button>
+		<button type="button" class="button2">盘点记录</button>
+        <input type="text" id="sn" value="编码值">
+
+        <script type="text/javascript">
+            var url = null;
+            var qr=GetQueryString("qrresult");
+            var btn2 = document.querySelector('.button2');
+            if(qr) {
+                btn2.addEventListener('click',function(){
+                    if(qr){
+                        alert(url)
+                    }                
+                })
+                document.getElementById("sn").value=qr;
+            }
+            function GetQueryString(name){
+                var reg = new RegExp("\\b"+ name +"=([^&]*)");
+                url = window.location.href
+                var r = location.href.match(reg);
+                if (r!=null) return decodeURIComponent(r[1]);
+            }
+        </script>
+	</body>
+</html>

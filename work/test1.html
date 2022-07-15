@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="sn">
+    <a href="//996315.com/api/scan/">扫描(Scan)</a>
+    
+    <script type="text/javascript">
+    var qr=GetQueryString("qrresult");
+    if(qr) document.getElementById("sn").value=qr;
+    
+    function GetQueryString(name){
+        var reg = new RegExp("\\b"+ name +"=([^&]*)");
+        var r = location.href.match(reg);
+        if (r!=null) return decodeURIComponent(r[1]);
+    }
+    </script>
+</body>
+</html>

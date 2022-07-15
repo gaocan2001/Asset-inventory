@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Web开发，HTML5，CSS3">
+    <link rel="icon" type="image/x-icon" href="./image/favicon.ico">
+    <link rel="stylesheet" href="./css/style.css" type="text/css" />
+    <script type="text/javascript" src="./js/function.js" ></script>
+    <title>盘点记录</title>
+</head>
+<body>
+    <div class="list">
+        <p>
+            <span class="clock"></span>
+            <span class="right">></span>
+        </p>
+    </div>
+    <hr>
+    <script>
+        var ps = document.querySelectorAll("p");
+        var clock = new Clock();
+        for (i = 0; i < ps.length; i += 1){
+            ps[i].setAttribute("data-index",i)
+            clock.ReturnDate(document.getElementsByClassName("clock")[i]);
+            ps[i].addEventListener('touchend',function(){
+                index = this.getAttribute("data-index");
+                location.href = "./盘点记录详情.html?index="+index;
+            })
+        }
+    </script>
+</body>
+</html>

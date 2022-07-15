@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="result">
+    <input type="button" value="Scan" id="saoma">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript">
+    var qr=GetQueryString("qrresult");
+    if(qr){
+        $("#result").val(qr);
+    }
+    
+    $("#saoma").click(function(){
+        location.href = "https://www.996315.com/api/scan/?redirect_uri=" + encodeURIComponent(location.href);
+    });
+    
+    function GetQueryString(name){
+        var reg = new RegExp("\\b"+ name +"=([^&]*)");
+        var r = decodeURIComponent(location.href).match(reg);
+        if (r!=null) return r[1];
+    }
+    </script>
+
+</body>
+</html>

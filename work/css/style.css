@@ -1,0 +1,63 @@
+.header {
+    position: relative;
+    width: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    color: red;
+    background-color: blue;
+}
+
+button.button1, button.button2 {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    color: black;
+}
+
+.main {
+    text-align: center;
+    padding: 10px;
+    margin: 30px;
+}
+
+#clock {
+    text-align: center;
+    padding: 10px;
+    margin: 30px;
+}
+
+p {
+    height: 30px;
+    color: black;
+    line-height: 30px;
+    font-size: 20px;
+}
+
+/* 兄弟选择器 */
+p > span~.right{
+    line-height: auto;
+    font-size: 30px;
+    float: right;
+}
+
+nav {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a {
+    font-size: large;
+    line-height: 50px;
+    text-decoration: none;
+    color: greenyellow;
+}
